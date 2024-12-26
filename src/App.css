@@ -1,0 +1,116 @@
+body {
+	background-color: #242424;
+	color: rgba(255, 255, 255, 0.87);
+}
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+.btn {
+	background-color: #f50057;
+	color: #fff;
+	border: none;
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 35px;
+}
+.counter {
+	font-size: 35px;
+	color: #f50057;
+}
+.App {
+	margin: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	flex-direction: column;
+	padding: 20px;
+}
+.btn-container {
+	display: flex;
+	margin-top: 10px;
+	gap: 5px;
+}
+.header_list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-size: 20px;
+}
+.input {
+	background-color: #333333;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+.item-list {
+	color: #fff;
+}
+.item-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+	padding: 5px 10px;
+	background-color: #372d2d;
+}
+.box-list {
+	width: 100%;
+}
+.box_list {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	gap: 20px;
+}
+
+.checked {
+	background-color: red;
+}
+.filter-btn {
+	background-color: #403131;
+	padding: 3px 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 20px;
+	margin-left: 10px;
+}
+.input-box * {
+	margin: 15px;
+}
+.inputname {
+	border-radius: 7px;
+	padding: 3px 6px;
+	max-width: 60px;
+}
+.flex-element {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+.flex-element div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.counterBtn {
+	background-color: red;
+	padding: 4px 10px;
+	border-radius: 7px;
+	color: #fff;
+	margin: 5px 0;
+}
+.counter {
+	color: #fff;
+	margin-bottom: 10px;
+}
+.taskInputItem {
+	display: none;
+}
