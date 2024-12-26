@@ -109,7 +109,7 @@ function timer() {
 						}}
 						className='counterBtn'
 					>
-						Run
+						Just Run
 					</button>
 				</div>
 				<div className='flex-next-element'>
@@ -120,7 +120,7 @@ function timer() {
 						}}
 						className='counterBtn'
 					>
-						Prew
+						Next
 					</button>
 					<input
 						ref={btn2End}
