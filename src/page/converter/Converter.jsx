@@ -2,9 +2,11 @@ import { useState } from 'react'
 
 const Converter = () => {
 	const [value, setValue] = useState({
-		afters: '0',
+		afters: '',
 		backes: '',
 		names: '',
+		docum1: '',
+		docum2: '',
 	})
 
 	const asyncRespApi = async (dos, pislia, counter, name1, name2) => {

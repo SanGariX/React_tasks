@@ -20,6 +20,9 @@ function App() {
 						<li>
 							<Link to='/converter'>Converter</Link>
 						</li>
+						<li>
+							<Link to='/calculator'>Calculator</Link>
+						</li>
 					</ul>
 				</nav>
 			</header>
