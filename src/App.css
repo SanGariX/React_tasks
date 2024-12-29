@@ -19,6 +19,9 @@ body {
 .counter {
 	font-size: 35px;
 	color: #f50057;
+	display: flex;
+	justify-content: flex-start;
+	min-width: 44px;
 }
 .App {
 	margin: 20px;
@@ -113,4 +116,76 @@ body {
 }
 .taskInputItem {
 	display: none;
+}
+.convetrer-cart {
+	background-color: #502705;
+	border-radius: 30px;
+	height: 300px;
+	max-width: 600px;
+	margin: 40px auto;
+	padding: 40px;
+}
+.box-value-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+.left-form {
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: #6f380b;
+	border-radius: 10px;
+	gap: 10px;
+	height: 150px;
+}
+.right-form {
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: #6f380b;
+	border-radius: 10px;
+	gap: 10px;
+	height: 150px;
+}
+.right-form p {
+	border-radius: 10px;
+	padding: 3px 10px;
+	width: 80%;
+	background-color: rgb(57, 137, 153);
+	color: #fff;
+	min-height: 22px;
+}
+.box-value-inner input,
+.box-value-inner p {
+	border-radius: 10px;
+	padding: 3px 10px;
+	width: 80%;
+	background-color: rgb(57, 137, 153);
+	color: #fff;
+}
+.box-value-inner input::placeholder {
+	color: #b7b7b7;
+}
+.box-value-inner button {
+	background-color: rgb(57, 137, 153);
+	padding: 4px 10px;
+	border-radius: 10px;
+	color: #d0d0d0;
+}
+.name-value {
+	display: flex;
+	justify-content: space-between;
+}
+.name-value p {
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
 }

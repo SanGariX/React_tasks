@@ -17,6 +17,9 @@ function App() {
 						<li>
 							<Link to='/timer'>Timer</Link>
 						</li>
+						<li>
+							<Link to='/converter'>Converter</Link>
+						</li>
 					</ul>
 				</nav>
 			</header>

@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
 
-function timer() {
+function Timer() {
 	const [clock, setClock] = useState('')
-	const [timer, setTimer] = useState({ currentTimer: 0 })
+	const [timer, setTimer] = useState({
+		currentTimer: 0,
+		time: 0,
+	})
 	const [pause, setPause] = useState('')
 	const intervalRef = useRef(null)
 	useEffect(() => {
@@ -48,7 +51,7 @@ function timer() {
 		})
 	}
 	useEffect(() => {
-		if (timer.time === undefined || timer.currentTimer === undefined) return
+		if (!timer.time && !timer.currentTimer) return
 		if (intervalRef.current) {
 			clearInterval(intervalRef.current)
 		}
@@ -56,7 +59,6 @@ function timer() {
 			return
 		}
 		const namesInterval = setInterval(() => {
-			console.log(timer.time, timer.currentTimer)
 			if (timer.time === timer.currentTimer) {
 				clearInterval(namesInterval)
 				return
@@ -81,63 +83,59 @@ function timer() {
 		setTimer({ ...timer, status: 'pause' })
 	}
 	return (
-		<div className='App'>
-			<p className='counter'>Time: {clock} </p>
-			<p className='counter'> {timer.currentTimer} </p>
-			<div className='flex-element'>
-				<div className='flex-prew-element'>
-					<input
-						ref={btn1Start}
-						className='inputname'
-						placeholder='Задайте значення'
-					/>
-					<button
-						id='btn1'
-						onClick={(evt) => {
-							handleBtn(evt)
-						}}
-						className='counterBtn'
-					>
-						Prew
-					</button>
+		<>
+			<div className='App'>
+				<p className='counter'>Time: {clock} </p>
+				<p className='counter'> {timer.currentTimer} </p>
+				<div className='flex-element'>
+					<div className='flex-prew-element'>
+						<input
+							ref={btn1Start}
+							className='inputname'
+							placeholder='Задайте значення'
+						/>
+						<button id='btn1' onClick={handleBtn} className='counterBtn'>
+							Prew
+						</button>
+					</div>
+					<div className='flex-pause-element'>
+						<button
+							id='justBtn'
+							onClick={(evt) => {
+								handleBtn(evt)
+							}}
+							className='counterBtn'
+						>
+							Just Run
+						</button>
+					</div>
+					<div className='flex-next-element'>
+						<button
+							id='btn2'
+							onClick={(evt) => {
+								handleBtn(evt)
+							}}
+							className='counterBtn'
+						>
+							Next
+						</button>
+						<input
+							ref={btn2End}
+							className='inputname'
+							placeholder='Задайте значення'
+						/>
+					</div>
 				</div>
-				<div className='flex-pause-element'>
-					<button
-						id='justBtn'
-						onClick={(evt) => {
-							handleBtn(evt)
-						}}
-						className='counterBtn'
-					>
-						Just Run
-					</button>
-				</div>
-				<div className='flex-next-element'>
-					<button
-						id='btn2'
-						onClick={(evt) => {
-							handleBtn(evt)
-						}}
-						className='counterBtn'
-					>
-						Next
-					</button>
-					<input
-						ref={btn2End}
-						className='inputname'
-						placeholder='Задайте значення'
-					/>
-				</div>
+				<button
+					onClick={() => {
+						handelPause()
+					}}
+					className='counterBtn'
+				>
+					Pause
+				</button>
 			</div>
-			<button
-				onClick={() => {
-					handelPause()
-				}}
-				className='counterBtn'
-			>
-				Pause
-			</button>
-		</div>
+		</>
 	)
 }
-export default timer
+export default Timer
