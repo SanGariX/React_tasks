@@ -22,7 +22,7 @@ const Converter = () => {
 		const itemName1 = data2.supported_codes.find((item) => item[0] === name1)
 		const itemName2 = data2.supported_codes.find((item) => item[0] === name2)
 		return {
-			afters: data.conversion_rates[pislia] * counter,
+			afters: (data.conversion_rates[pislia] * counter).toFixed(2),
 			backes: data.base_code,
 			names: pislia,
 			docum1: itemName1[1],
@@ -75,7 +75,7 @@ const Converter = () => {
 				</form>
 				<b>{'=>'}</b>
 				<div className='right-form'>
-					<p>{value.afters.toFixed(1)}</p>
+					<p>{value.afters}</p>
 				</div>
 			</div>
 		</div>
