@@ -2,9 +2,6 @@ import { useState } from 'react'
 
 const Calculator = () => {
 	const elements = [
-		' ( ',
-		' ) ',
-		' % ',
 		'AC',
 		'7',
 		'8',
@@ -117,9 +114,7 @@ const Calculator = () => {
 		}
 		setDisplay(display + `${evt.target.textContent}`)
 	}
-	const styleClass = (evt) => {
-		console.log(evt.target, 'kdngodkgn')
-	}
+
 	return (
 		<div className='wrapper_calculator'>
 			<div className='top_calculator'>
