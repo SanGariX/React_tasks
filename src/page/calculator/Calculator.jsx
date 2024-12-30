@@ -21,21 +21,8 @@ const Calculator = () => {
 		' + ',
 	]
 	const [display, setDisplay] = useState('3 * 5 + 9 * 5')
-	const sum = (item1, item2) => {
-		return item1 + item2
-	}
-	const vid = (item1, item2) => {
-		return item1 - item2
-	}
-	// const dob = (item1, item2) => {
-	// 	return item1 * item2
-	// }
-	// const ris = (item1, item2) => {
-	// 	return item1 / item2
-	// }
 	const result = (element) => {
 		const arr = element.split(' ')
-		let results = 0
 		const copyArr = [...arr]
 		arr.forEach((item, idx, array) => {
 			if (item === '*' || item === '/') {
@@ -74,7 +61,6 @@ const Calculator = () => {
 				arr.forEach((item2, idx2, array2) => {
 					if (item2 === '+' || item2 === '-') {
 						if (item2 === '+') {
-							results += sum(Number(array2[idx2 - 1]), Number(array2[idx2 + 1]))
 							arr.splice(
 								idx2 - 1,
 								3,
@@ -82,7 +68,6 @@ const Calculator = () => {
 							)
 							arr.push('#', '#')
 						} else if (item2 === '-') {
-							results += vid(Number(array2[idx2 - 1]), Number(array2[idx2 + 1]))
 							copyArr.splice(
 								idx2 - 1,
 								3,
@@ -97,7 +82,8 @@ const Calculator = () => {
 				})
 			}
 		})
-		return results
+		console.log(arr)
+		return arr[0]
 	}
 
 	const handleBtn = (evt) => {
