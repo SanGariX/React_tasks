@@ -4,6 +4,7 @@ import List from '../page/list//List.jsx'
 import Timer from '../page/timer/Timer.jsx'
 import Converter from '../page/converter/Converter.jsx'
 import Calculator from '../page/calculator/Calculator.jsx'
+import Weather from '../page/weather/Weather.jsx'
 const AppRoutes = () => {
 	return (
 		<Routes>
@@ -12,6 +13,7 @@ const AppRoutes = () => {
 			<Route path='/timer' element={<Timer />} />
 			<Route path='/converter' element={<Converter />} />
 			<Route path='/calculator' element={<Calculator />} />
+			<Route path='/weather' element={<Weather />} />
 		</Routes>
 	)
 }

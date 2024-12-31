@@ -1,0 +1,139 @@
+@import url(https://fonts.googleapis.com/css?family=Viaoda+Libre:regular);
+.weather_container {
+	max-width: 1400px;
+	margin: 50px auto;
+	padding: 20px 30px;
+	border-radius: 20px;
+	background-color: rgb(35, 24, 9);
+}
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.Weather {
+	font-size: 30px;
+	font-family: 'Viaoda Libre';
+}
+.input__form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 10px 15px;
+	border-radius: 15px;
+	background-color: rgb(115, 45, 45);
+}
+.input__form input {
+	background-color: inherit;
+	font-size: 17px;
+	color: #fff;
+}
+input::placeholder {
+	color: #bebebe;
+}
+.form_btn {
+	font-size: 17px;
+	color: #fff;
+	background-color: rgb(89, 46, 46);
+	padding: 5px 8px;
+	border-radius: 12px;
+}
+.main {
+	max-width: 1000px;
+	margin: 40px auto;
+}
+.top_main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.top_main_name {
+	font-size: 20px;
+}
+.top-name-day {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.top-name-day input {
+	font-size: 17px;
+	color: #fff;
+	background-color: rgb(89, 46, 46);
+	padding: 5px 8px;
+	border-radius: 15px;
+}
+.top-name-btn {
+	font-size: 17px;
+	color: #fff;
+	background-color: rgb(108, 59, 59);
+	padding: 5px 8px;
+	border-radius: 12px;
+}
+.main-warning-words {
+	font-size: 30px;
+	text-align: center;
+	margin: 20px 0;
+}
+.bottom-main-list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+	overflow-x: auto;
+}
+.bottom-main-list-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 15px 10px;
+	background-color: rgb(89, 46, 46);
+	border-radius: 15px;
+	text-align: center;
+	gap: 10px;
+	width: 180px;
+}
+.bottom-main-list-item p {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	font-size: 20px;
+}
+.bottom-main_item-flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+	text-align: center;
+}
+.bottom-main_item-flex p {
+	justify-content: center;
+	margin-top: 5px;
+}
+.item-flexitem-minmax-number {
+	justify-content: center !important;
+}
+.input__form-city {
+	max-width: 100px;
+	width: 100%;
+}
+.input__form-day {
+	max-width: 170px;
+	width: 100%;
+}
+.img-card {
+	width: 100px;
+	margin: 0 auto;
+}
+.dsnon {
+	display: none;
+}
+@media (max-width: 530px) {
+	.bottom-main-list {
+		justify-content: start;
+	}
+}

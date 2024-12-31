@@ -23,6 +23,9 @@ function App() {
 						<li>
 							<Link to='/calculator'>Calculator</Link>
 						</li>
+						<li>
+							<Link to='/weather'>Weather</Link>
+						</li>
 					</ul>
 				</nav>
 			</header>
