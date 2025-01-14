@@ -1,101 +1,23 @@
 import { useState } from 'react'
+import { resultcalculatorFn } from '../../helpers/calculatorFn'
+import { elements } from '../../helpers/Constant/ConstantCalculator'
 
 const Calculator = () => {
-	const elements = [
-		'AC',
-		'7',
-		'8',
-		'9',
-		' / ',
-		'4',
-		'5',
-		'6',
-		' * ',
-		'1',
-		'2',
-		'3',
-		'-',
-		'0',
-		'.',
-		' = ',
-		' + ',
-	]
-	const [display, setDisplay] = useState('3 * 5 + 9 * 5')
-	const result = (element) => {
-		const arr = element.split(' ')
-		const copyArr = [...arr]
-		arr.forEach((item, idx, array) => {
-			if (item === '*' || item === '/') {
-				if (item === '*') {
-					arr.splice(
-						idx - 1,
-						3,
-						Number(array[idx - 1]) * Number(array[idx + 1])
-					)
-					arr.push('#', '#')
-
-					copyArr.splice(
-						idx - 1,
-						3,
-						Number(array[idx - 1]) * Number(array[idx + 1])
-					)
-
-					return
-				} else if (item === '/') {
-					arr.splice(
-						idx - 1,
-						3,
-						Number(array[idx - 1]) / Number(array[idx + 1])
-					)
-					arr.push('#', '#')
-
-					copyArr.splice(
-						idx - 1,
-						3,
-						Number(array[idx - 1]) / Number(array[idx + 1])
-					)
-					return
-				}
-			}
-			if (idx === arr.length - 1) {
-				arr.forEach((item2, idx2, array2) => {
-					if (item2 === '+' || item2 === '-') {
-						if (item2 === '+') {
-							arr.splice(
-								idx2 - 1,
-								3,
-								Number(array2[idx2 - 1]) + Number(array2[idx2 + 1])
-							)
-							arr.push('#', '#')
-						} else if (item2 === '-') {
-							copyArr.splice(
-								idx2 - 1,
-								3,
-								Number(array2[idx2 - 1]) - Number(array2[idx2 + 1])
-							)
-							arr.push('#', '#')
-						}
-						if (idx === arr.length - 1) {
-							return
-						}
-					}
-				})
-			}
-		})
-		console.log(arr)
-		return arr[0]
-	}
-
+	const [display, setDisplay] = useState('0')
 	const handleBtn = (evt) => {
 		if (evt.target.textContent === 'AC') {
 			setDisplay('0')
 			return
 		} else if (display === '0') {
+			if (evt.target.textContent === '.') {
+				setDisplay(display + `${evt.target.textContent}`)
+				return
+			}
 			setDisplay(`${evt.target.textContent}`)
 			return
 		}
 		if (evt.target.textContent === ' = ') {
-			setDisplay(result(display))
+			setDisplay(resultcalculatorFn(display))
 			return
 		}
 		setDisplay(display + `${evt.target.textContent}`)

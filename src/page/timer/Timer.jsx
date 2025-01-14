@@ -1,80 +1,22 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 
+import { TimerStateResult } from '../../helpers/timerOptionState'
+import CounterTimer from './CounterTimer'
+import {TimerStateEffect} from '../../helpers/useEffectTimer.js'
+import { useSelector } from 'react-redux'
 function Timer() {
-	const [clock, setClock] = useState('')
+	const btn1Start = useRef()
+	const btn2End = useRef()
+	const theme = useSelector((state) => {
+		return state.ThemeBtn.theme
+	})
+	const [pause, setPause] = useState('')
+	const intervalRef = useRef(null)
 	const [timer, setTimer] = useState({
 		currentTimer: 0,
 		time: 0,
 	})
-	const [pause, setPause] = useState('')
-	const intervalRef = useRef(null)
-	useEffect(() => {
-		const interval = setInterval(() => {
-			const timeBase = Math.floor(Date.now() / 1000)
-			const timeMinute = Math.floor((timeBase % 3600) / 60)
-			const timeHours = (Math.floor((timeBase % (3600 * 24)) / 3600) + 2) % 24
-			const timeSeconds = Math.floor(timeBase % 60)
-			setClock(
-				`${String(timeHours).padStart(2, '0')}:${String(timeMinute).padStart(
-					2,
-					'0'
-				)}:${String(timeSeconds).padStart(2, '0')}`
-			)
-		}, 1000)
-		intervalRef.current = interval
-		return () => clearInterval(intervalRef.current)
-	}, [])
-	const btn1Start = useRef()
-	const btn2End = useRef()
-	function handleBtn(evt) {
-		const { id } = evt.target
-		if (id === 'btn1') {
-			setTimer((prevState) => ({
-				...prevState,
-				currentTimer: Number(Number(btn1Start.current.value).toFixed(1)),
-				time: 0,
-				status: 'back',
-			}))
-			return
-		} else if (id === 'btn2') {
-			setTimer({
-				currentTimer: 0,
-				time: Number(Number(btn2End.current.value).toFixed(1)),
-				status: 'next',
-			})
-			return
-		}
-		setTimer({
-			currentTimer: 0,
-			time: -1,
-			status: 'next',
-		})
-	}
-	useEffect(() => {
-		if (!timer.time && !timer.currentTimer) return
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current)
-		}
-		if (timer.status === 'pause') {
-			return
-		}
-		const namesInterval = setInterval(() => {
-			if (timer.time === timer.currentTimer) {
-				clearInterval(namesInterval)
-				return
-			}
-			if (timer.status === 'next') {
-				const timeState = timer.currentTimer + 0.1
-				setTimer({ ...timer, currentTimer: Number(timeState.toFixed(1)) })
-			} else if (timer.status === 'back') {
-				const timeState = timer.currentTimer - 0.1
-				setTimer({ ...timer, currentTimer: Number(timeState.toFixed(1)) })
-			}
-			return
-		}, 100)
-		intervalRef.current = namesInterval
-		return () => clearInterval(namesInterval)
-	}, [timer])
+	TimerStateEffect(timer, setTimer, intervalRef)
 	function handelPause() {
 		if (timer.status === 'pause') {
 			return setTimer({ ...timer, status: `${pause}` })
@@ -85,8 +27,8 @@ function Timer() {
 	return (
 		<>
 			<div className='App'>
-				<p className='counter'>Time: {clock} </p>
-				<p className='counter'> {timer.currentTimer} </p>
+				<CounterTimer />
+				<p className={`counter ${theme === "light" ? "counterLight": "counterDark"}`}> {timer.currentTimer} </p>
 				<div className='flex-element'>
 					<div className='flex-prew-element'>
 						<input
@@ -94,7 +36,13 @@ function Timer() {
 							className='inputname'
 							placeholder='Задайте значення'
 						/>
-						<button id='btn1' onClick={handleBtn} className='counterBtn'>
+						<button
+							id='btn1'
+							onClick={(evt) => {
+								TimerStateResult(btn1Start, btn2End, evt, setTimer, timer)
+							}}
+							className='counterBtn'
+						>
 							Prew
 						</button>
 					</div>
@@ -102,7 +50,7 @@ function Timer() {
 						<button
 							id='justBtn'
 							onClick={(evt) => {
-								handleBtn(evt)
+								TimerStateResult(btn1Start, btn2End, evt, setTimer, timer)
 							}}
 							className='counterBtn'
 						>
@@ -113,7 +61,7 @@ function Timer() {
 						<button
 							id='btn2'
 							onClick={(evt) => {
-								handleBtn(evt)
+								TimerStateResult(btn1Start, btn2End, evt, setTimer, timer)
 							}}
 							className='counterBtn'
 						>

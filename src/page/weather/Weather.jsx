@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './Weather.css'
+import { weatherApi } from '../../helpers/WeatherApi'
+import { ThenApiEditor } from '../../helpers/thenApiEditor'
 const Weather = () => {
 	const [Api, setApi] = useState({
 		country: '',
@@ -8,57 +10,13 @@ const Weather = () => {
 		status: false,
 		statusText: 0,
 	})
-	const weatherApi = async (value, day) => {
-		const URL = 'http://api.weatherapi.com/v1'
-		const Api_key = 'ce2cb9b2a3da414bb5b172546231704'
-		const params = new URLSearchParams({
-			key: Api_key,
-			q: value,
-			lang: 'uk',
-			days: day,
-		})
-		const respons = await fetch(`${URL}/forecast.json?${params}`)
-		if (!respons.ok) {
-			throw new Error(respons.statusText)
-		}
-		const data = await respons.json()
-		return data
-	}
+
 	const handelForm = (evt) => {
 		evt.preventDefault()
 		const city = evt.target.elements.city.value
 		const day = evt.target.elements.day.value
 		weatherApi(city, day)
-			.then((data) => {
-				const {
-					location: { country, name },
-				} = data
-				const arr = data.forecast.forecastday.map(
-					({
-						day: {
-							mintemp_c,
-							maxtemp_c,
-							condition: { icon, text },
-						},
-						date,
-					}) => {
-						return {
-							mintemp_c: mintemp_c,
-							maxtemp_c: maxtemp_c,
-							icon: icon,
-							text: text,
-							month: date.split('-')[1],
-							day: date.split('-')[2],
-						}
-					}
-				)
-				setApi({
-					country: country,
-					name: name,
-					arr: arr,
-					status: true,
-				})
-			})
+			.then((data)=>{ThenApiEditor(data, setApi)})
 			.catch((err) => {
 				setApi({
 					...Api,
